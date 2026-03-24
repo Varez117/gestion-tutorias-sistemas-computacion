@@ -28,6 +28,7 @@ export const mockDB = {
         { user: "22370125", pass: "123", role: "alumno", refId: 25 },
         { user: "22370126", pass: "123", role: "alumno", refId: 26 },
         { user: "22370127", pass: "123", role: "alumno", refId: 27 },
+        { user: "23370753", pass: "123", role: "alumno", refId: 28 },
 
         // Tutores
         { user: "aliciacortes", pass: "123", role: "tutor", refId: 1 },
@@ -474,6 +475,25 @@ export const mockDB = {
             evidencias: [],
             historial_actividades: [],
             actividad_actual: null
-        }
+        },
+        {
+            id: 28,
+            nombre: "DANIEL MENDOZA PARRA",
+            matricula: "23370753",
+            carrera: "ING. TEC. INF. COM",
+            semestre: 8,
+            prom_sin_rep: 90.29,
+            estatus: "VIGENTE",
+            tutorId: 1,
+            liberado: false,
+            evidencias: [],
+            historial_actividades: [
+                { id_actividad: "A1", nombre: "Taller Lectura", tipo: "Académica", estado: "Suficiente" },
+                { id_actividad: "E1", nombre: "Atletismo", tipo: "Extraescolar", estado: "Suficiente" },
+                { id_actividad: "E2", nombre: "ENAC", tipo: "Académica", estado: "Excelente" }
+            ],
+            actividad_actual: { id_actividad: "E2", nombre: "Selección de Básquetbol", tipo: "Extraescolar" }
+        },
+        
     ]
 };
