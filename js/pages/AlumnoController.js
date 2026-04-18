@@ -32,7 +32,11 @@ export class AlumnoController {
         a: "¡Hola! Soy Sussan, tu asistente virtual para ayudarte a gestionar tu calendario, brindarte informacion para tus actividades complementarias y acompañarte en el proceso de tutorias mientars estudias.",
       },
       {
-        q: "¿Cómo puedes ayudarme?",
+        q: "¿Cuál es mi avance en las actividades?",
+        a: "Haz clic en cualquier día para agendar una nota personalizada vinculada a esa fecha.",
+      },
+      {
+        q: "¿Cómo libero mi crédito de tutorías?",
         a: "Haz clic en cualquier día para agendar una nota personalizada vinculada a esa fecha.",
       },
     ]);
