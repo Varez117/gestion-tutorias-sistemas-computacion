@@ -20,7 +20,7 @@ export class AlumnoController {
   }
 
   async init() {
-    this.setupSecurity(); // <--- NUEVO: Inicializar seguridad anticopia/inspector
+    this.setupSecurity();
     this.renderUI();
     this.setupNavigation();
     await this.loadFeriados();
@@ -80,7 +80,71 @@ export class AlumnoController {
     document.getElementById("btn-nueva-nota").onclick = () =>
       this.promptNuevaNota();
 
+    // Controles para Modal de Privacidad
+    const linkPrivacidad = document.getElementById("link-privacidad");
+    const modalPrivacidad = document.getElementById("modal-privacidad");
+    if (linkPrivacidad && modalPrivacidad) {
+      linkPrivacidad.onclick = () => {
+        modalPrivacidad.style.display = "flex";
+      };
+    }
+    const closePrivModal = () => {
+      if (modalPrivacidad) modalPrivacidad.style.display = "none";
+    };
+    const btnClosePriv = document.getElementById("btn-close-privacidad");
+    const btnAceptarPriv = document.getElementById("btn-aceptar-privacidad");
+    if (btnClosePriv) btnClosePriv.onclick = closePrivModal;
+    if (btnAceptarPriv) btnAceptarPriv.onclick = closePrivModal;
+
     window.addEventListener("db_updated", () => this.renderUI());
+
+    // Iniciar modal de bienvenida
+    this.setupWelcomeModal();
+  }
+
+  // --- MODAL DE BIENVENIDA ---
+  setupWelcomeModal() {
+    const modalBienvenida = document.getElementById("modal-bienvenida");
+    const alumno = Database.getAlumno(this.activeUser.refId);
+
+    if (modalBienvenida && alumno) {
+      const primerNombre = alumno.nombre.split(" ")[0];
+      document.getElementById("bienvenida-nombre").textContent = primerNombre;
+
+      const cerrarBienvenida = () => {
+        modalBienvenida.style.display = "none";
+      };
+
+      document.getElementById("btn-close-splash").onclick = cerrarBienvenida;
+
+      document.getElementById("btn-splash-avance").onclick = () => {
+        document.getElementById("nav-perfil").click();
+        cerrarBienvenida();
+      };
+
+      document.getElementById("btn-splash-tutor").onclick = () => {
+        document.getElementById("nav-tutor").click();
+        cerrarBienvenida();
+      };
+
+      document.getElementById("btn-splash-calendario").onclick = () => {
+        document.getElementById("nav-calendario").click();
+        cerrarBienvenida();
+      };
+
+      document.getElementById("btn-splash-notas").onclick = () => {
+        document.getElementById("nav-notas").click();
+        cerrarBienvenida();
+      };
+
+      document.getElementById("btn-splash-chatbot").onclick = () => {
+        cerrarBienvenida();
+        const btnChat = document.getElementById("open-chat-btn");
+        if (btnChat) btnChat.click();
+      };
+
+      modalBienvenida.style.display = "flex";
+    }
   }
 
   async loadFeriados() {
@@ -504,9 +568,15 @@ export class AlumnoController {
     alumno.historial_actividades.forEach((act, index) => {
       const clone = template.content.cloneNode(true);
       const isLib = act.tipo === "Acreditación Institucional";
+      const isAprobada = UI.esAprobada(act.estado); // Verificamos si pasó o no
+
       clone.querySelector(".act-nombre").textContent = act.nombre;
       clone.querySelector(".act-tipo").textContent = act.tipo;
-      clone.querySelector(".act-estado").textContent = act.estado;
+
+      // ESTADO: Mostrar Acreditado / No acreditado
+      const actEstado = clone.querySelector(".act-estado");
+      actEstado.textContent = isAprobada ? "Acreditado" : "No acreditado";
+
       clone.querySelector(".act-icono").innerHTML = isLib
         ? svgLib
         : act.tipo === "Académica"
@@ -514,49 +584,67 @@ export class AlumnoController {
           : svgExtra;
 
       const btnAdjuntar = clone.querySelector(".btn-adjuntar");
-      const estadoSpan = clone.querySelector(".act-estado");
-      const article = clone.querySelector(".item-actividad");
+      const instruccionesP = clone.querySelector(".act-instrucciones");
 
       if (isLib) {
-        article.classList.add("bg-azul-claro", "border-azul");
-        estadoSpan.classList.add("badge-liberado-outline");
+        actEstado.style.backgroundColor = "#eff6ff"; // Azul claro
+        actEstado.style.color = "#3b82f6"; // Azul
+        actEstado.style.borderColor = "#dbeafe";
+        instruccionesP.textContent = "Créditos liberados en el sistema.";
+        instruccionesP.style.color = "#3b82f6"; // Azul
       } else {
-        article.classList.add("bg-blanco", "border-gris");
-        if (UI.esAprobada(act.estado)) {
-          estadoSpan.classList.add("badge-aprobado");
+        if (isAprobada) {
+          actEstado.style.backgroundColor = "#ecfdf5"; // Verde claro
+          actEstado.style.color = "#10b981"; // Verde
+          actEstado.style.borderColor = "#d1fae5";
+
           btnAdjuntar.style.display = "flex";
+
           if (act.tieneArchivo) {
-            btnAdjuntar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> Ver`;
+            // Caso: Aprobado y YA TIENE Constancia adjunta
+            btnAdjuntar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> Ver Constancia`;
             btnAdjuntar.onclick = () => this.viewStoredFile(index);
+
+            instruccionesP.textContent = "Completado";
+            instruccionesP.style.color = "#10b981"; // Verde
           } else {
+            // Caso: Aprobado pero FALTA Constancia
+            btnAdjuntar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg> Adjuntar Constancia`;
             btnAdjuntar.onclick = () =>
               this.openModal(act.nombre, `act-${index}`);
+
+            // EL CAMBIO ESTÁ AQUÍ
+            instruccionesP.textContent = "Falta evidencia";
+            instruccionesP.style.color = "#f59e0b"; // Naranja/Ambar
           }
         } else {
-          estadoSpan.classList.add("badge-reprobado");
+          // Caso: No Acreditada
+          actEstado.style.backgroundColor = "#fff1f2"; // Rojo claro
+          actEstado.style.color = "#ef4444"; // Rojo
+          actEstado.style.borderColor = "#ffe4e6";
+          instruccionesP.textContent = "No acreditada";
+          instruccionesP.style.color = "#ef4444"; // Rojo
         }
       }
       listaHistorial.appendChild(clone);
     });
   }
 
-  // --- NUEVO: SISTEMA DE SEGURIDAD ANTICOPIA/INSPECTOR ---
+  // --- SISTEMA DE SEGURIDAD ANTICOPIA/INSPECTOR ---
   setupSecurity() {
-    // 1. Bloqueo de atajos de teclado comunes para DevTools
     window.addEventListener("keydown", (e) => {
       if (
         e.key === "F12" ||
         (e.ctrlKey &&
           e.shiftKey &&
           (e.key === "I" || e.key === "J" || e.key === "C")) ||
-        (e.ctrlKey && e.key === "U") // Ver código fuente
+        (e.ctrlKey && e.key === "U")
       ) {
         e.preventDefault();
         this.triggerSecurityLogout();
       }
     });
 
-    // 2. Detección por cambio de tamaño drástico (cuando se ancla el inspector)
     const threshold = 160;
     window.addEventListener("resize", () => {
       const widthDiff = window.outerWidth - window.innerWidth;
