@@ -255,7 +255,7 @@ export class AlumnoController {
       tarea: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`,
       examen: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>`,
       nota: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3z"></path><path d="M15 3v6h6"></path><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>`,
-      otro: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>`,
+      otro: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>`,
     };
     return svgs[categoria] || svgs.nota;
   }
@@ -412,12 +412,16 @@ export class AlumnoController {
     }
   }
 
+  // --- MODIFICADO: Interceptamos la consola de PDFService para leer el código de error exacto
   async processAndSavePDF() {
     if (!this.selectedFile || this.isUploading || !this.currentActId) return;
     this.isUploading = true;
     const btnSave = document.getElementById("btn-guardar-pdf");
     btnSave.disabled = true;
     btnSave.textContent = "Procesando...";
+
+    let errorEspecifico = null;
+    const originalConsoleLog = console.log;
 
     try {
       const actModal = document
@@ -426,28 +430,79 @@ export class AlumnoController {
       const alumno = Database.getAlumno(this.activeUser.refId);
       const index = parseInt(this.currentActId.split("-")[1]);
 
-      const qrData = await PDFService.scanQRCode(this.selectedFile);
-      const pdfTextRaw = await PDFService.extractText(this.selectedFile);
+      let qrData = null;
+      let pdfTextRaw = "";
 
-      if (PDFService.validateData(qrData, pdfTextRaw, alumno, actModal)) {
-        this.updateStatusLabel("¡Éxito! Guardando...", "success");
-        const fileId = `${this.activeUser.refId}_act_${index}`;
-        await StorageManager.save(fileId, this.selectedFile);
-        alumno.historial_actividades[index].tieneArchivo = true;
-        Database.updateUser(this.activeUser.refId, alumno);
-        btnSave.textContent = "¡Guardado!";
-
-        UI.showToast("¡Archivo guardado con éxito!", "success");
-        setTimeout(() => this.closeModal(), 1500);
-      } else {
-        throw new Error("Datos no coinciden");
+      try {
+        qrData = await PDFService.scanQRCode(this.selectedFile);
+        pdfTextRaw = await PDFService.extractText(this.selectedFile);
+      } catch (e) {
+        throw new Error("Error al leer el documento PDF.");
       }
+
+      // Sobrescribimos console.log temporalmente para atrapar los mensajes de PDFService
+      console.log = function (...args) {
+        // Ejecutamos el log original siempre
+        originalConsoleLog.apply(console, args);
+
+        // PDFService manda algo como: console.log("[SYS-8X1A]", 0)
+        if (args.length >= 2 && args[1] === 0) {
+          const rawCode = String(args[0]).replace(/\[|\]/g, ""); // Extrae "SYS-8X1A"
+
+          const errorMap = {
+            "SYS-F9A1": "Inicio auditoría",
+            "SYS-Q1B7": "Bloque QR",
+            "SYS-3E8D": "QR Incorrecto o no detectado",
+            "SYS-H8C3": "Bloque identidad",
+            "SYS-8X1A": "Nombre no coincide con el alumno",
+            "SYS-6T2N": "Matrícula no coincide con el alumno",
+            "SYS-J7D2": "Bloque académico",
+            "SYS-4P0S": "Actividad incorrecta",
+            "SYS-9K3E": "Carrera incorrecta",
+            "SYS-Z9X0": "Resultado final",
+          };
+
+          // Guardamos el primer error específico que encontremos (ignorando el resultado final global)
+          if (errorMap[rawCode] && !errorEspecifico && rawCode !== "SYS-Z9X0") {
+            errorEspecifico = "Error: " + errorMap[rawCode];
+          }
+        }
+      };
+
+      // Ejecutamos la validación
+      const validacion = PDFService.validateData(
+        qrData,
+        pdfTextRaw,
+        alumno,
+        actModal,
+      );
+
+      // Si falla, disparamos nuestro error personalizado capturado por el interceptor
+      if (!validacion) {
+        throw new Error(
+          errorEspecifico || "Error de validación en el documento.",
+        );
+      }
+
+      // Si todo es correcto:
+      this.updateStatusLabel("¡Éxito! Guardando...", "success");
+      const fileId = `${this.activeUser.refId}_act_${index}`;
+      await StorageManager.save(fileId, this.selectedFile);
+
+      alumno.historial_actividades[index].tieneArchivo = true;
+      Database.updateUser(this.activeUser.refId, alumno);
+
+      btnSave.textContent = "¡Guardado!";
+      UI.showToast("¡Archivo guardado con éxito!", "success");
+
+      setTimeout(() => this.closeModal(), 2000);
     } catch (e) {
       this.updateStatusLabel(e.message, "error");
       btnSave.disabled = false;
       btnSave.textContent = "Guardar Archivo";
-      UI.showToast(e.message, "error");
     } finally {
+      // SIEMPRE restauramos la consola a su estado natural, pase lo que pase
+      console.log = originalConsoleLog;
       this.isUploading = false;
     }
   }
@@ -469,18 +524,45 @@ export class AlumnoController {
     }
   }
 
+  // --- MODIFICADO: Bug fijado. Limpiar estado visual y variables al abrir el modal
   openModal(actNombre, actId) {
     this.currentActId = actId;
     this.selectedFile = null;
+    this.isUploading = false;
+
     document.getElementById("modal-actividad-nombre").textContent = actNombre;
-    document.getElementById("btn-guardar-pdf").disabled = true;
+
+    // Limpiamos la caché visual del input file
+    const fileInput = document.getElementById("file-input");
+    if (fileInput) fileInput.value = "";
+
+    // Restauramos el texto de archivo seleccionado
+    const display = document.getElementById("file-name-display");
+    if (display) display.textContent = "Ningún archivo seleccionado";
+
+    // Bloqueamos el botón y restablecemos su texto
+    const btnSave = document.getElementById("btn-guardar-pdf");
+    if (btnSave) {
+      btnSave.disabled = true;
+      btnSave.textContent = "Guardar Archivo";
+    }
+
+    // Borramos el aviso rojo/verde si quedó del intento anterior
     const label = document.getElementById("status-badge-upload");
     if (label) label.remove();
+
     document.getElementById("modal-upload").style.display = "flex";
   }
 
+  // --- MODIFICADO: Bug fijado. Limpiar caché en background al cerrar
   closeModal() {
     document.getElementById("modal-upload").style.display = "none";
+    this.selectedFile = null;
+    this.currentActId = null;
+    this.isUploading = false;
+
+    const fileInput = document.getElementById("file-input");
+    if (fileInput) fileInput.value = "";
   }
 
   // --- LÓGICA AVATAR DE USUARIO ---
@@ -617,7 +699,6 @@ export class AlumnoController {
             btnAdjuntar.onclick = () =>
               this.openModal(act.nombre, `act-${index}`);
 
-            // EL CAMBIO ESTÁ AQUÍ
             instruccionesP.textContent = "Falta evidencia";
             instruccionesP.style.color = "#f59e0b"; // Naranja/Ambar
           }
