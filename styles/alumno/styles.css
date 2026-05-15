@@ -31,7 +31,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--color-fondo);
-  color: var(--texto-oscuro);
+  color: var(---oscuro);
   line-height: 1.5;
   display: flex;
   height: 100vh;
@@ -85,7 +85,7 @@ body {
   padding: 0.85rem 1rem;
   border: none;
   background: transparent;
-  color: var(--texto-gris);
+  color: var(---gris);
   font-weight: 600;
   font-family: inherit;
   font-size: 0.9rem;
@@ -101,12 +101,12 @@ body {
 }
 .nav-btn.active {
   background-color: #f0f4ff; /* Ejemplo: un fondo suave */
-  color: #2563eb; /* Ejemplo: texto azul */
+  color: #2563eb; /* Ejemplo:  azul */
   scale: 1.02;
 }
 .nav-btn.active:hover {
   background-color: #f0f4ff; /* Ejemplo: un fondo suave */
-  color: #2563eb; /* Ejemplo: texto azul */
+  color: #2563eb; /* Ejemplo:  azul */
 }
 
 /* Opcional: Estilo para el icono cuando está activo */
@@ -125,7 +125,7 @@ body {
 .btn-outline-danger {
   background: transparent;
   border: 1px solid var(--borde-gris);
-  color: var(--texto-gris);
+  color: var(---gris);
   font-weight: 700;
   padding: 0.85rem 1rem;
   border-radius: 0.75rem;
@@ -221,9 +221,9 @@ body {
   flex: 1;
 }
 
-.texto-etiqueta {
-  font-size: 0.8rem;
-  font-weight: 650;
+.-etiqueta {
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--texto-etiqueta);
   text-transform: uppercase;
   letter-spacing: 0.1em;
