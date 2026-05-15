@@ -222,8 +222,8 @@ body {
 }
 
 .-etiqueta {
-  font-size: 1rem;
-  font-weight: 900;
+  font-size: .9rem;
+  font-weight: 700;
   color: var(--texto-etiqueta);
   text-transform: uppercase;
   letter-spacing: 0.1em;
